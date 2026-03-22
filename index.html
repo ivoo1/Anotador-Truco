@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#064e3b">
+    <title>Anotador de Truco</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Anotador de Truco</h1>
+        </header>
+
+        <main class="score-board">
+            <!-- Team Nosotros -->
+            <div class="team-section" id="team-nosotros">
+                <div class="team-header">
+                    <button class="btn-mini" onclick="subPoint('nosotros')">-</button>
+                    <input type="text" class="team-name" value="NOS" spellcheck="false" maxlength="12">
+                    <button class="btn-mini" onclick="addPoint('nosotros')">+</button>
+                </div>
+                <div class="clickable-area" onclick="addPoint('nosotros')">
+                    <div class="score-display">0</div>
+                    <div class="matches-container" id="matches-nosotros"></div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Team Ellos -->
+            <div class="team-section" id="team-ellos">
+                <div class="team-header">
+                    <button class="btn-mini" onclick="subPoint('ellos')">-</button>
+                    <input type="text" class="team-name" value="ELLOS" spellcheck="false" maxlength="12">
+                    <button class="btn-mini" onclick="addPoint('ellos')">+</button>
+                </div>
+                <div class="clickable-area" onclick="addPoint('ellos')">
+                    <div class="score-display">0</div>
+                    <div class="matches-container" id="matches-ellos"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <button class="btn-reset" onclick="resetGame()">Nueva Partida</button>
+        </footer>
+    </div>
+    
+    <!-- Winner Modal -->
+    <div id="winner-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="winner-text">¡Ganó NOS!</h2>
+            <p>La partida ha finalizado a los 30 puntos.</p>
+            <div class="modal-buttons">
+                <button class="btn-modal btn-cancel" onclick="closeModal()">Cancelar</button>
+                <button class="btn-modal btn-new" onclick="forceResetGame()">Nueva Partida</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
