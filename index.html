@@ -19,10 +19,13 @@
         <main class="score-board">
             <!-- Team Nosotros -->
             <div class="team-section" id="team-nosotros">
+                <div class="side-controls side-left">
+                    <button class="btn-side" onclick="addPoint('nosotros')">+</button>
+                    <button class="btn-side" onclick="subPoint('nosotros')">-</button>
+                </div>
+                
                 <div class="team-header">
-                    <button class="btn-mini" onclick="subPoint('nosotros')">-</button>
                     <input type="text" class="team-name" value="NOS" spellcheck="false" maxlength="12">
-                    <button class="btn-mini" onclick="addPoint('nosotros')">+</button>
                 </div>
                 <div class="clickable-area" onclick="addPoint('nosotros')">
                     <div class="score-display">0</div>
@@ -34,10 +37,13 @@
 
             <!-- Team Ellos -->
             <div class="team-section" id="team-ellos">
+                <div class="side-controls side-right">
+                    <button class="btn-side" onclick="addPoint('ellos')">+</button>
+                    <button class="btn-side" onclick="subPoint('ellos')">-</button>
+                </div>
+                
                 <div class="team-header">
-                    <button class="btn-mini" onclick="subPoint('ellos')">-</button>
                     <input type="text" class="team-name" value="ELLOS" spellcheck="false" maxlength="12">
-                    <button class="btn-mini" onclick="addPoint('ellos')">+</button>
                 </div>
                 <div class="clickable-area" onclick="addPoint('ellos')">
                     <div class="score-display">0</div>

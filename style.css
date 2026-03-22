@@ -77,6 +77,7 @@ header h1 {
     padding: 15px 10px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     overflow: hidden;
+    position: relative; /* ensure side absolute fits properly */
 }
 
 .team-section {
@@ -85,6 +86,7 @@ header h1 {
     flex-direction: column;
     align-items: center;
     padding: 0 5px;
+    position: relative;
 }
 
 .divider {
@@ -96,10 +98,11 @@ header h1 {
 .team-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
-    margin-bottom: 10px;
-    padding: 0 5px;
+    margin-bottom: 5px;
+    padding: 0;
+    z-index: 2; /* keep input clickable over side buttons */
 }
 
 .team-name {
@@ -110,41 +113,58 @@ header h1 {
     font-weight: 800;
     text-align: center;
     width: 100%;
-    flex: 1;
     min-width: 0;
     outline: none;
     text-transform: uppercase;
-    padding: 0 4px;
+    padding: 0;
 }
 
 #team-nosotros .team-name { color: var(--brand-nosotros); text-shadow: var(--glow-nosotros); }
 #team-ellos .team-name { color: var(--brand-ellos); text-shadow: var(--glow-ellos); }
 
-.btn-mini {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--text-main);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    width: 36px;
-    height: 36px;
-    font-size: 1.4rem;
-    font-weight: 800;
+/* SIDE CONTROLS */
+.side-controls {
+    position: absolute;
+    top: 50px; /* Below the team name */
+    bottom: 10px; /* Above the footer */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    width: 45px;
+    gap: 15px;
+    z-index: 10;
+}
+
+.side-left {
+    left: -5px;
+}
+
+.side-right {
+    right: -5px;
+}
+
+.btn-side {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    color: var(--text-muted);
+    font-size: 2.2rem;
+    font-weight: 300;
     cursor: pointer;
     transition: all 0.2s;
     user-select: none;
-    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.btn-mini:active {
-    transform: scale(0.9);
+.btn-side:active {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(0.95);
 }
 
-#team-nosotros .btn-mini:hover { background: rgba(251, 191, 36, 0.2); color: var(--brand-nosotros); border-color: var(--brand-nosotros); box-shadow: var(--glow-nosotros); }
-#team-ellos .btn-mini:hover { background: rgba(255, 255, 255, 0.2); color: var(--brand-ellos); border-color: var(--brand-ellos); box-shadow: var(--glow-ellos); }
-
+#team-nosotros .btn-side:active { color: var(--brand-nosotros); border-color: rgba(251, 191, 36, 0.4); box-shadow: var(--glow-nosotros); }
+#team-ellos .btn-side:active { color: var(--brand-ellos); border-color: rgba(255, 255, 255, 0.3); box-shadow: var(--glow-ellos); }
 
 .clickable-area {
     width: 100%;
@@ -251,7 +271,7 @@ footer {
     .match-box { width: 38px; height: 38px; }
     .score-display { font-size: 3rem; }
     .app-container { padding: 10px; }
-    .btn-mini { width: 30px; height: 30px; font-size: 1.2rem; }
+    .side-controls { width: 38px; }
 }
 
 @media (max-height: 700px) {
@@ -259,7 +279,6 @@ footer {
     .score-board { padding: 10px; }
     header { margin-bottom: 10px; }
     .match-box { height: 35px; width: 35px; }
-    .btn-mini { width: 28px; height: 28px; font-size: 1rem; }
 }
 
 /* Modal Styles */
