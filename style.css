@@ -1,21 +1,21 @@
 :root {
-    --bg-dark: #064e3b;
-    --card-bg: rgba(6, 50, 35, 0.6);
-    --text-main: #f8fafc;
-    --text-muted: #9ca3af;
+    --bg-dark: #2d1a11;
+    --card-bg: rgba(30, 15, 8, 0.6);
+    --text-main: #f5deb3;
+    --text-muted: #a88b7d;
     
-    --brand-nosotros: #fbbf24; /* Gold */
-    --brand-ellos: #ffffff; /* White */
+    --brand-nosotros: #d4ab71;
+    --brand-ellos: #cc2929;
     
-    --glow-nosotros: 0 0 15px rgba(251, 191, 36, 0.4);
-    --glow-ellos: 0 0 15px rgba(255, 255, 255, 0.3);
+    --glow-nosotros: 0 0 15px rgba(212, 171, 113, 0.4);
+    --glow-ellos: 0 0 15px rgba(204, 41, 41, 0.5);
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Outfit', system-ui, sans-serif;
+    font-family: 'Rye', cursive, sans-serif;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
 }
@@ -46,7 +46,7 @@ input[type="text"] {
     display: flex;
     flex-direction: column;
     padding: calc(env(safe-area-inset-top) + 15px) calc(env(safe-area-inset-right) + 15px) calc(env(safe-area-inset-bottom) + 15px) calc(env(safe-area-inset-left) + 15px);
-    background: radial-gradient(circle at 50% 0%, #166534 0%, var(--bg-dark) 100%);
+    background: radial-gradient(circle at 50% 0%, #4a2e1b 0%, var(--bg-dark) 100%);
 }
 
 header {
@@ -56,13 +56,11 @@ header {
 }
 
 header h1 {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     font-weight: 800;
-    letter-spacing: 1px;
-    background: linear-gradient(90deg, var(--brand-nosotros) 0%, #fcd34d 50%, var(--brand-ellos) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    color: var(--text-main);
+    text-shadow: 2px 4px 6px rgba(0,0,0,0.6);
 }
 
 .score-board {
@@ -164,8 +162,8 @@ header h1 {
     transform: scale(0.95);
 }
 
-#team-nosotros .btn-side:active { color: var(--brand-nosotros); border-color: rgba(251, 191, 36, 0.4); box-shadow: var(--glow-nosotros); }
-#team-ellos .btn-side:active { color: var(--brand-ellos); border-color: rgba(255, 255, 255, 0.3); box-shadow: var(--glow-ellos); }
+#team-nosotros .btn-side:active { color: var(--brand-nosotros); border-color: rgba(212, 171, 113, 0.4); box-shadow: var(--glow-nosotros); }
+#team-ellos .btn-side:active { color: var(--brand-ellos); border-color: rgba(204, 41, 41, 0.4); box-shadow: var(--glow-ellos); }
 
 .clickable-area {
     width: 100%;
@@ -214,16 +212,9 @@ header h1 {
     display: flex;
 }
 
-.match-line {
-    stroke: currentColor;
-    stroke-width: 4;
-    stroke-linecap: round;
-    fill: none;
+.matchstick, .matchhead {
     transition: all 0.2s ease-in-out;
 }
-
-#team-nosotros .match-line { color: var(--brand-nosotros); }
-#team-ellos .match-line { color: var(--brand-ellos); }
 
 .divider-15 {
     width: 50px;
@@ -262,9 +253,9 @@ footer {
 }
 
 .btn-reset.confirm-mode {
-    background: rgba(251, 191, 36, 0.2);
+    background: rgba(212, 171, 113, 0.2);
     color: var(--brand-nosotros);
-    border-color: rgba(251, 191, 36, 0.5);
+    border-color: rgba(212, 171, 113, 0.5);
     box-shadow: var(--glow-nosotros);
 }
 

@@ -151,12 +151,12 @@ function renderTeam(team) {
 
 /*
   Creates an SVG representing up to 5 points.
-  Line drawing logic for Argentina Truco standard:
-  1: Left vertical
-  2: Left + Bottom
-  3: Left + Bottom + Right
+  Line drawing logic based on user sketch:
+  1: Top horizontal
+  2: Top + Right
+  3: Top + Right + Left
   4: Full square
-  5: Square + Diagonal (Top-left to Bottom-right)
+  5: Square + Diagonal (Bottom-left to Top-right)
 */
 function createMatchBox(points, index) {
     const size = 45;
@@ -170,22 +170,28 @@ function createMatchBox(points, index) {
     
     let paths = '';
     
-    // Helper to format line drawing
-    const line = (x1, y1, x2, y2) => `<line class="match-line" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" />`;
+    // Helper to format matchstick drawing
+    const line = (x1, y1, x2, y2) => `
+        <g>
+            <line class="matchstick" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#d4ab71" stroke-width="3.5" stroke-linecap="round" />
+            <circle class="matchhead" cx="${x2}" cy="${y2}" r="2" fill="#cc2929" />
+        </g>
+    `;
     
     const p = padding;
     const p2 = padding + innerSize;
+    const o = 4; // offset para aplicar a las puntas y evitar que se pisen
     
-    // 1 point: Left vertical
-    if (points >= 1) paths += line(p, p, p, p2);
-    // 2 points: Bottom horizontal
-    if (points >= 2) paths += line(p, p2, p2, p2);
-    // 3 points: Right vertical
-    if (points >= 3) paths += line(p2, p2, p2, p);
-    // 4 points: Top horizontal
-    if (points >= 4) paths += line(p2, p, p, p);
-    // 5 points: Diagonal
-    if (points === 5) paths += line(p, p, p2, p2);
+    // 1 point: Top horizontal (Head on right)
+    if (points >= 1) paths += line(p+o, p, p2-o, p);
+    // 2 points: Right vertical (Head on bottom)
+    if (points >= 2) paths += line(p2, p+o, p2, p2-o);
+    // 3 points: Left vertical (Head on bottom)
+    if (points >= 3) paths += line(p, p+o, p, p2-o);
+    // 4 points: Bottom horizontal (Head on right)
+    if (points >= 4) paths += line(p+o, p2, p2-o, p2);
+    // 5 points: Diagonal (Bottom-left to Top-right, Head on top-right)
+    if (points === 5) paths += line(p+o, p2-o, p2-o, p+o);
     
     wrapper.innerHTML = `<svg width="100%" height="100%" viewBox="0 0 ${size} ${size}">${paths}</svg>`;
     return wrapper;
